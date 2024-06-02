@@ -18,6 +18,9 @@ from bidexhands.tasks.shadow_hand_door_open_outward import ShadowHandDoorOpenOut
 from bidexhands.tasks.shadow_hand_bottle_cap import ShadowHandBottleCap
 from bidexhands.tasks.shadow_hand_push_block import ShadowHandPushBlock
 from bidexhands.tasks.shadow_hand_swing_cup import ShadowHandSwingCup
+from bidexhands.tasks.shadow_hand_swing_pot import ShadowHandSwingPot #新增注册项 旋转锅
+from bidexhands.tasks.shadow_hand_cheers import ShadowHandCheers #新增注册项 干杯
+from bidexhands.tasks.shadow_hand_point_cloud import ShadowHandPointCloud #新增注册项 点云
 from bidexhands.tasks.shadow_hand_grasp_and_place import ShadowHandGraspAndPlace
 from bidexhands.tasks.shadow_hand_scissors import ShadowHandScissors
 from bidexhands.tasks.shadow_hand_switch import ShadowHandSwitch
