@@ -34,7 +34,7 @@ env:
   fallDistance: 0.4
   fallPenalty: 0.0
 
-  objectType: "pot" # can be block, egg or pen
+  objectType: "point_cloud" # can be block, egg or pen
   observationType: "full_state" # full_state or point_cloud
   handAgentIndex: "[[0, 1, 2, 3, 4, 5]]"
   asymmetric_observations: False
