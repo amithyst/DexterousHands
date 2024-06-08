@@ -443,7 +443,7 @@ class ShadowHandCheers(BaseTask):
         bucket_asset_file = "mjcf/bucket/100454/mobility.urdf"
         bucket_asset = self.gym.load_asset(self.sim, asset_root, bucket_asset_file, bucket_asset_options)
         bucket_pose = gymapi.Transform()
-        bucket_pose.p = gymapi.Vec3(0.04, -0.08, 0.5)#y=-0.05修改之处,桶杯坐标，1轴正是面向摄像头，2轴正是右边，3轴是向上，x,y,z
+        bucket_pose.p = gymapi.Vec3(0.04, -0.05, 0.5)#y=-0.05,或者y=-0.08修改之处,桶杯坐标，1轴正是面向摄像头，2轴正是右边，3轴是向上，x,y,z
         bucket_pose.r = gymapi.Quat().from_euler_zyx(-0., 0, 0)
 
         self.num_bucket_bodies = self.gym.get_asset_rigid_body_count(bucket_asset)
@@ -458,7 +458,7 @@ class ShadowHandCheers(BaseTask):
         shadow_another_hand_start_pose.r = gymapi.Quat().from_euler_zyx(3.14159, -1.57, 1.57)
 
         object_start_pose = gymapi.Transform()
-        object_start_pose.p = gymapi.Vec3(0.01, 0.08, 0.5)#修改之处，cup被子坐标,y=0.04
+        object_start_pose.p = gymapi.Vec3(0.01, 0.04, 0.5)#修改之处，cup被子坐标,y=0.04,或者y=0.08
         object_start_pose.r = gymapi.Quat().from_euler_zyx(0, 0.0, 1.2)#修改之处1.57
         pose_dx, pose_dy, pose_dz = -1.0, 0.0, -0.0
 
@@ -1490,8 +1490,8 @@ def compute_hand_reward(
     
     # 找出哪些环境达到了目标并更新成功次数
     successes = torch.where(successes == 0, 
-                    torch.where(torch.norm(bucket_handle_pos - cup_spout_pos, p=2, dim=-1) < 0.06, torch.ones_like(successes), successes), successes)
-
+                    torch.where(torch.norm(bucket_handle_pos - cup_spout_pos, p=2, dim=-1) < 0.08, torch.ones_like(successes), successes), successes)
+    #修改之处，距离上限原来是0.06
     resets = torch.where(progress_buf >= max_episode_length, torch.ones_like(resets), resets)
 
     goal_resets = torch.zeros_like(resets)
